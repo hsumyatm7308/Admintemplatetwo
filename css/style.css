@@ -124,6 +124,55 @@ a{
 /* End Shortcut Area */
 
 
+
+/* Start right navbar  */
+.right-panels{
+  width: 200px;
+  height: 80vh;
+  background-color: #f4f4f4;
+
+  position: absolute;
+  top: 70px;
+  right: 0;
+
+  box-shadow: -5px 3px 10px rgba(0,0,0,.5);
+  padding: 10px;
+
+  z-index:200;
+
+  display: none;
+
+
+}
+
+
+body.show-nav > .right-panels{
+  display: block;
+}
+
+
+.sitesettings{
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+
+  position: fixed;
+  right: 10px;
+  bottom: 50px;
+
+  opacity:.7;
+
+  z-index: 100;
+
+}
+
+.sitesettings .sitesettings-item:hover{
+  opacity: 1;
+}
 /* Start Project Status Section */
 
 /* End Project Status Section */
+
+
+
+/* 7RP  */

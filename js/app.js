@@ -1,92 +1,132 @@
-$('document').ready(function(){
-    
-    // Start Left Side Bar
-   $('.sidebarlinks').click(function(){
+$('document').ready(function () {
+
+  // Start Left Side Bar
+  $('.sidebarlinks').click(function () {
     $('.sidebarlinks').removeClass('currents');
     $(this).addClass('currents');
-    
+
     // End Left Side Bar
-   });
+  });
 });
 
 
+
+const getsitesetting = document.getElementById('sitesettings');
+getsitesetting.addEventListener('click',function(){
+  document.body.classList.toggle('show-nav');
+})
+
 // Start Js Area
 
- /* Start Top Navbar  */
+/* Start Top Navbar  */
 
-  /* start notify & userlogout  */
+/* start notify & userlogout  */
 //  start dropdown
-function dropbtn(e){
-    // console.log(e.target);
-    e.target.parentElement.nextElementSibling.classList.toggle('show');
+function dropbtn(e) {
+  // console.log(e.target);
+  e.target.parentElement.nextElementSibling.classList.toggle('show');
 }
 // end dropdown
- /* end notify & userlogout  */
+/* end notify & userlogout  */
 
-/* End Top Navbar  */
 
-// start guage area 
+//  Start Gauge Area 
 
-var gauge = new JustGage({
+var gaugeurs = new JustGage({
   id: "gaugeusers", // the id of the html element
+  width:200,
+  height:200,
   value: 50,
   min: 0,
   max: 70,
- 
+  gaugeWidthScale: 0.6
+});
+
+var gaugecus = new JustGage({
+  id: "gaugecustomers", // the id of the html element
+  width:200,
+  height:200,
+  value: 50,
+  min: 0,
+  max: 70,
+  gaugeWidthScale: 0.6
+});
+
+var gaugeemps = new JustGage({
+  id: "gaugeemployees", // the id of the html element
+  width:200,
+  height:200,
+  value: 50,
+  min: 0,
+  max: 70,
+  gaugeWidthScale: 0.6
+});
+
+var gaugeinvs = new JustGage({
+  id: "gaugeinvesters", // the id of the html element
+  width:200,
+  height:200,
+  value: 50,
+  min: 0,
+  max: 70,
   gaugeWidthScale: 0.6
 });
 
 // update the value randomly
 setInterval(() => {
-gauge.refresh(Math.random() * 100);
+  gaugeurs.refresh(Math.random() * 100);
+  gaugecus.refresh(Math.random() * 100);
+  gaugeemps.refresh(Math.random() * 100);
+  gaugeinvs.refresh(Math.random() * 100);
 }, 5000)
 
 
-// 22GG 
+//  End Gauge Area 
 
-// End Gauge 
+
+/* End Top Navbar  */
 
 // Start Expense Area
 const ctx = document.getElementById("mypiechart");
 ctx.height = 250;
 new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        data: [12, 19, 3],
-      }]
-    },
-    options: {
-      responsive:false
-    }
-  });
+  type: 'doughnut',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      data: [12, 19, 3],
+    }]
+  },
+  options: {
+    responsive: false
+  }
+});
 // End Expense Area
 
 // Start Earning Area
-google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+    ['Year', 'Sales', 'Expenses'],
+    ['2004', 1000, 400],
+    ['2005', 1170, 460],
+    ['2006', 660, 1120],
+    ['2007', 1030, 540]
+  ]);
 
-        var options = {
-          title: 'Sales Performance',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
+  var options = {
+    title: 'Sales Performance',
+    curveType: 'function',
+    legend: { position: 'bottom' }
+  };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-        chart.draw(data, options);
+  chart.draw(data, options);
 
-      }
+}
 // End Earning Area
 
 // End Js Area
@@ -104,9 +144,9 @@ google.charts.load('current', {'packages':['corechart']});
 
 
 // function getminnumber(numbers){
-   
+
 //    let minnumber = numbers[0]; //5
-   
+
 //    for(var x=0; x<numbers.length; x++){
 //       // Get Mini Number
 //       // if(numbers[x] < minnumber){
@@ -134,7 +174,7 @@ google.charts.load('current', {'packages':['corechart']});
 //    for(let y=0; y<numbers.length; y++){
 //     let maxnumber = numbers[y];
 //     let curidx = y;
-    
+
 //     for(let x=y; x<numbers.length; x++){ 
 
 //       //  Get Max Number
@@ -149,7 +189,7 @@ google.charts.load('current', {'packages':['corechart']});
 //       //   curidx = x;
 //       // }
 //     }
-     
+
 //     // return maxnumber; //20
 //     // return [maxnumber,curidx]; //[20,6]
 
@@ -162,7 +202,7 @@ google.charts.load('current', {'packages':['corechart']});
 
 //     numbers[curidx] = numbers[y]; 
 //     numbers[y] = maxnumber; 
-    
+
 //    }
 
 //     return numbers;
@@ -176,97 +216,97 @@ google.charts.load('current', {'packages':['corechart']});
 //  Start Project Status Area 
 let saledatas = [
   {
-    title:"Order Value",
-    rank:80,
-    value:"120.8%",
-    color:"bg-secondary"
+    title: "Order Value",
+    rank: 80,
+    value: "120.8%",
+    color: "bg-secondary"
   },
   {
-    title:"Total Products",
-    rank:50,
-    value:"325.2%",
-    color:"bg-success"
+    title: "Total Products",
+    rank: 50,
+    value: "325.2%",
+    color: "bg-success"
   },
   {
-    title:"Quantity",
-    rank:70,
-    value:"25.60%",
-    color:"bg-warning"
+    title: "Quantity",
+    rank: 70,
+    value: "25.60%",
+    color: "bg-warning"
   },
   {
-    title:"New SKU",
-    rank:43,
-    value:"13.34%",
-    color:"bg-info"
+    title: "New SKU",
+    rank: 43,
+    value: "13.34%",
+    color: "bg-info"
   },
   {
-    title:"Dept",
-    rank:10,
-    value:"3.40%",
-    color:"bg-danger"
+    title: "Dept",
+    rank: 10,
+    value: "3.40%",
+    color: "bg-danger"
   },
 ];
 
 var sortingclick = document.querySelector('.sortingclicks');
 
-function sortingmaxtomin(saledatas){
+function sortingmaxtomin(saledatas) {
 
-  for(let y=0; y<saledatas.length; y++){
-   let maxnumber = saledatas[y];
-   let curidx = y;
-   
-   for(let x=y; x<saledatas.length; x++){ 
+  for (let y = 0; y < saledatas.length; y++) {
+    let maxnumber = saledatas[y];
+    let curidx = y;
 
-     //  Get Max Number
-     if(saledatas[x].rank > maxnumber.rank){
-       maxnumber = saledatas[x];
-       curidx = x;
-     }
+    for (let x = y; x < saledatas.length; x++) {
 
-   }
+      //  Get Max Number
+      if (saledatas[x].rank > maxnumber.rank) {
+        maxnumber = saledatas[x];
+        curidx = x;
+      }
+
+    }
 
 
-   saledatas[curidx] = saledatas[y]; 
-   saledatas[y] = maxnumber; 
-   
+    saledatas[curidx] = saledatas[y];
+    saledatas[y] = maxnumber;
+
   }
 
-   return saledatas;
+  return saledatas;
 }
 
-function sortingmintomax(saledatas){
+function sortingmintomax(saledatas) {
 
-  for(let y=0; y<saledatas.length; y++){
-   let minnumber = saledatas[y];
-   let curidx = y;
-   
-   for(let x=y; x<saledatas.length; x++){ 
+  for (let y = 0; y < saledatas.length; y++) {
+    let minnumber = saledatas[y];
+    let curidx = y;
 
-     //  Get Max Number
-     if(saledatas[x].rank < minnumber.rank){
-      minnumber = saledatas[x];
-       curidx = x;
-     }
+    for (let x = y; x < saledatas.length; x++) {
 
-   }
-  
+      //  Get Max Number
+      if (saledatas[x].rank < minnumber.rank) {
+        minnumber = saledatas[x];
+        curidx = x;
+      }
 
-   saledatas[curidx] = saledatas[y]; 
-   saledatas[y] = minnumber; 
-   
+    }
+
+
+    saledatas[curidx] = saledatas[y];
+    saledatas[y] = minnumber;
+
   }
 
-   return saledatas;
+  return saledatas;
 }
 
 
-function showsaledatas(sortdatas){
+function showsaledatas(sortdatas) {
   let getsalescnt = document.getElementById('salescontainer');
 
   let progress = `<div>`;
 
-  for(let x=0; x<sortdatas.length; x++){
-       progress += `
+  for (let x = 0; x < sortdatas.length; x++) {
+    progress += `
       <div class="mt-2">
          <div class="d-flex justify-content-between">
            <small${sortdatas[x].title}></small>
@@ -279,24 +319,38 @@ function showsaledatas(sortdatas){
         `;
   }
 
-   progress += `</div>`;
+  progress += `</div>`;
 
   getsalescnt.innerHTML = progress;
 }
 
-window.onload = function(){
+window.onload = function () {
   let sortdatas = sortingmintomax(saledatas);
   showsaledatas(sortdatas);
 }
 
-sortingclick.addEventListener('click',function(e){
+
+
+
+const getyear = document.getElementById('getyear');
+const getfullyear = new Date().getFullYear();
+getyear.textContent = getfullyear;
+
+
+sortingclick.addEventListener('click', function (e) {
   let sortdatas;
-  if(e.target.classList.contains('sortmaxtomins')){
+  if (e.target.classList.contains('sortmaxtomins')) {
     sortdatas = sortingmaxtomin(saledatas);
     showsaledatas(sortdatas);
-  }else{
+  } else {
     sortdatas = sortingmintomax(saledatas);
     showsaledatas(sortdatas);
   }
 })
+
+
+
+
+
+
 //  End Project Status Area 
